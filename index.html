@@ -6,7 +6,693 @@
     <title>My Portfolio</title>
 
     <link href="/dist/output.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&family=Work+Sans:wght@100;200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&family=Urbanist:wght@100;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
   </head>
-  <body></body>
+  <body>
+    <style>
+      .pattern {
+        background-image: url("https://placehold.co/1280x720");
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        height: 100%;
+        opacity: 5;
+      }
+
+      .custom-font-1 {
+        font-family: "Raleway", sans-serif;
+      }
+
+      .custom-font-2 {
+        font-family: "Urbanist", sans-serif;
+      }
+
+      #backToTopBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 50%;
+        background-color: #000;
+        color: #fff;
+        font-size: 0; /* Hide any text inside the button */
+        cursor: pointer;
+        opacity: 0.6;
+        transition: opacity 0.3s ease;
+      }
+
+      #backToTopBtn:hover {
+        opacity: 1;
+      }
+    </style>
+
+    <!-- Header -->
+
+    <header class="pattern">
+      <div class="px-6 mx-auto">
+        <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-6">
+          <div class="flex h-16 items-center justify-between">
+            <div class="flex-1 md:flex md:items-center md:gap-12">
+              <a class="block" href="#">
+                <span class="sr-only">Home</span>
+                <img class="w-auto h-6 sm:h-12" src="#" alt="logo" />
+              </a>
+            </div>
+
+            <div class="flex lg:hidden px-6">
+              <button
+                id="menu-toggle"
+                type="button"
+                class="-m-2.5 inline-flex items-center justify-center rounded-md p-1.5 text-gray-300"
+              >
+                <span class="sr-only">Open main menu</span>
+                <svg
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <div class="hidden lg:flex lg:gap-x-12">
+              <ul class="flex items-center gap-6 text-sm">
+                <li>
+                  <a
+                    class="px-1 py-1 text-sm font-light text-white transition-colors duration-300 transform hover:underline underline-offset-8 tracking-widest custom-font-2"
+                    href="#"
+                  >
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="py-1 text-sm font-light text-white transition-colors duration-300 transform hover:underline underline-offset-8 tracking-widest custom-font-2"
+                    href="#"
+                  >
+                    Projects
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="py-1 text-sm font-light text-white transition-colors duration-300 transform hover:underline underline-offset-8 tracking-widest custom-font-2"
+                    href="#"
+                  >
+                    Contact
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Mobile menu, show/hide based on menu open state -->
+            <div class="hidden" role="dialog" aria-modal="true" id="menu">
+              <div class="fixed inset-0 z-10">
+                <div
+                  class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-10 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+                >
+                  <div class="flex lg:hidden px-8 items-center justify-between">
+                    <a href="#" class="-m-1.5 p-1.5">
+                      <span class="sr-only">Home</span>
+                    </a>
+                    <button
+                      type="button"
+                      id="close-menu"
+                      class="inline-flex items-center justify-center rounded-md p-1.5 text-gray-700"
+                    >
+                      <span class="sr-only">Close menu</span>
+                      <svg
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+
+                  <div class="mt-6 flow-root">
+                    <div class="-my-6 divide-y divide-gray-500/10">
+                      <div class="space-y-2 py-6">
+                        <a
+                          href="#"
+                          class="-mx-3 text-sm font-semibold leading-6 text-center text-gray-900 block px-4 py-2 hover:bg-gray-100"
+                        >
+                          About
+                        </a>
+                        <a
+                          href="#"
+                          class="-mx-3 text-sm font-semibold leading-6 text-center text-gray-900 block px-4 py-2 hover:bg-gray-100"
+                        >
+                          Projects
+                        </a>
+                        <a
+                          href="#"
+                          class="-mx-3 text-sm font-semibold leading-6 text-center text-gray-900 block px-4 py-2 hover:bg-gray-100"
+                        >
+                          Contact
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End of Mobile menu, show/hide based on menu open state -->
+          </div>
+        </div>
+
+        <div class="flex flex-col items-center py-6 lg:h-[36rem] lg:flex-row">
+          <div
+            class="mx-auto max-w-screen-xl px-4 lg:flex lg:h-screen lg:items-center"
+          >
+            <div class="mx-auto max-w-3xl text-center mb-32">
+              <h1
+                class="text-gray-200 bg-clip-text font-normal lg:text-7xl text-3xl tracking-wider custom-font-1"
+              >
+                YOUR NAME
+              </h1>
+
+              <p
+                class="text-gray-300 mx-auto mt-4 max-w-xl sm:text-xl/relaxed tracking-wider font-light"
+              >
+                Short description
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- End of Header -->
+
+    <!-- About Section -->
+
+    <section id="about">
+        <div class="mx-auto max-w-screen-2xl px-4 py-16 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 lg:h-screen lg:grid-cols-2">
+            <div class="relative z-10 lg:py-16">
+              <div class="relative h-64 sm:h-80 lg:h-full">
+                <img
+                  alt="my picture"
+                  src="https://placehold.co/540x540"
+                  class="absolute inset-0 h-full w-full object-cover"
+                />
+              </div>
+            </div>
+      
+            <div class="relative flex items-center bg-gray-100">
+              <span
+                class="hidden lg:absolute lg:inset-y-0 lg:-start-16 lg:block lg:w-16 lg:bg-gray-100"
+              ></span>
+      
+              <div class="p-8 sm:p-16 lg:p-24">
+                <h2 class="text-2xl font-bold sm:text-3xl">
+                  About me
+                </h2>
+      
+                <p class="mt-4 text-gray-600">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid,
+                  molestiae! Quidem est esse numquam odio deleniti, beatae, magni
+                  dolores provident quaerat totam eos, aperiam architecto eius quis
+                  quibusdam fugiat dicta.
+                </p>
+      
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <!-- End of About Section -->
+
+    <!-- Skillset Section -->
+
+    <section class="bg-gray-100">
+        <div class="container grid grid-cols-1 gap-10 px-6 py-12 mx-auto lg:grid-cols-3">
+            <div>
+                <h1 class="mt-2 text-2xl font-semibold text-gray-800 md:text-3xl ">My technical skillset</h1>    
+                <p class="mt-3 text-gray-500 ">Lorem, ipsum dolor sit amet consectetur.</p>
+            </div>
+    
+            <div class="grid grid-cols-1 gap-12 lg:col-span-2 sm:grid-cols-2">
+                <div>
+                    <h2 class="font-semibold text-lg text-gray-800 ">Python</h2>
+                    <p class="mt-1 text-gray-500 ">Lorem, ipsum dolor sit amet consectetur</p>
+                </div>
+    
+                <div>
+                    <h2 class="font-semibold text-lg text-gray-800 ">Java</h2>
+                    <p class="mt-1 text-gray-500 ">Lorem, ipsum dolor sit amet consectetur</p>
+                </div>
+                <div>
+                    <h2 class="font-semibold text-lg text-gray-800 ">C++</h2>
+                    <p class="mt-1 text-gray-500 ">Lorem, ipsum dolor sit amet consectetur</p>
+                </div>
+                <div>
+                    <h2 class="font-semibold text-lg text-gray-800 ">JavaScript</h2>
+                    <p class="mt-1 text-gray-500 ">Lorem, ipsum dolor sit amet consectetur</p>
+                </div>
+                <div>
+                    <h2 class="font-semibold text-lg text-gray-800 ">PHP</h2>
+                    <p class="mt-1 text-gray-500 ">Lorem, ipsum dolor sit amet consectetur</p>
+                </div>
+                <div>
+                    <h2 class="font-semibold text-lg text-gray-800 ">Git</h2>
+                    <p class="mt-1 text-gray-500 ">Lorem, ipsum dolor sit amet consectetur</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- End of Skillset Section -->
+
+    <!-- Projects Section -->
+
+    <section  id="projects">
+        <div class="max-w-screen-xl px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8">
+          <header class="text-center">
+            <h2 class="text-xl font-bold text-gray-900 sm:text-3xl">
+              My projects
+            </h2>
+      
+            <p class="max-w-lg mx-auto mt-4 text-gray-500">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque
+              praesentium cumque iure dicta incidunt est ipsam, officia dolor fugit
+              natus
+            </p>
+          </header>
+      
+          <ul class="grid grid-cols-1 gap-4 mt-8 lg:grid-cols-3">
+            <li>
+              <a href="#" class="relative block group">
+                <img
+                  src="https://placehold.co/350x300"
+                  alt=""
+                  class="object-cover w-full transition duration-500 aspect-square group-hover:opacity-90"
+                />
+              </a>
+            </li>
+      
+            <li>
+              <a href="#" class="relative block group">
+                <img
+                  src="https://placehold.co/350x300"
+                  alt=""
+                  class="object-cover w-full transition duration-500 aspect-square group-hover:opacity-90"
+                />
+              </a>
+            </li>
+      
+            <li class="lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:row-start-1">
+              <a href="#" class="relative block group">
+                <img
+                  src="https://placehold.co/640x640"
+                  alt=""
+                  class="object-cover w-full transition duration-500 aspect-square group-hover:opacity-90"
+                />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+    <!-- End of Projects Section -->
+
+    <!-- Work Experience Section -->
+
+    <section class="bg-gray-100">
+        <div class="container px-4 py-16 mx-auto space-y-8 lg:max-w-3xl">
+            <h2 class="text-2xl font-bold md:text-4xl">My work experience</h2>
+            <div class="space-y-8">
+                <div>
+                    <h3 class="mb-3 text-lg font-bold md:text-xl">2021</h3>
+                    <ul class="space-y-4">
+                        <li class="space-y-1">
+                            <div class="flex items-center space-x-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 fill-current ">
+                                    <path d="M426.072,86.928A238.75,238.75,0,0,0,88.428,424.572,238.75,238.75,0,0,0,426.072,86.928ZM257.25,462.5c-114,0-206.75-92.748-206.75-206.75S143.248,49,257.25,49,464,141.748,464,255.75,371.252,462.5,257.25,462.5Z"></path>
+                                    <polygon points="221.27 305.808 147.857 232.396 125.23 255.023 221.27 351.063 388.77 183.564 366.142 160.937 221.27 305.808"></polygon>
+                                </svg>
+                                <h4 class="font-medium">Quis velit quae similique maxime optio temporibus</h4>
+                            </div>
+                            <p class="ml-7 ">Illum hic placeat unde porro, cupiditate nesciunt? Numquam debitis eligendi aspernatur mum.</p>
+                        </li>
+                        <li class="space-y-1">
+                            <div class="flex items-center space-x-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 fill-current ">
+                                    <path d="M426.072,86.928A238.75,238.75,0,0,0,88.428,424.572,238.75,238.75,0,0,0,426.072,86.928ZM257.25,462.5c-114,0-206.75-92.748-206.75-206.75S143.248,49,257.25,49,464,141.748,464,255.75,371.252,462.5,257.25,462.5Z"></path>
+                                    <polygon points="221.27 305.808 147.857 232.396 125.23 255.023 221.27 351.063 388.77 183.564 366.142 160.937 221.27 305.808"></polygon>
+                                </svg>
+                                <h4 class="font-medium">Quis velit quae similique maxime optio temporibus</h4>
+                            </div>
+                            <p class="ml-7 ">Illum hic placeat unde porro, cupiditate nesciunt? Numquam debitis eligendi aspernatur mum.</p>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="mb-3 text-lg font-bold md:text-xl">2020</h3>
+                    <ul class="space-y-4">
+                        <li class="space-y-1">
+                            <div class="flex items-center space-x-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 fill-current ">
+                                    <path d="M426.072,86.928A238.75,238.75,0,0,0,88.428,424.572,238.75,238.75,0,0,0,426.072,86.928ZM257.25,462.5c-114,0-206.75-92.748-206.75-206.75S143.248,49,257.25,49,464,141.748,464,255.75,371.252,462.5,257.25,462.5Z"></path>
+                                    <polygon points="221.27 305.808 147.857 232.396 125.23 255.023 221.27 351.063 388.77 183.564 366.142 160.937 221.27 305.808"></polygon>
+                                </svg>
+                                <h4 class="font-medium">Quis velit quae similique maxime optio temporibus</h4>
+                            </div>
+                            <p class="ml-7 ">Illum hic placeat unde porro, cupiditate nesciunt? Numquam debitis eligendi aspernatur mum.</p>
+                        </li>
+                        <li class="space-y-1">
+                            <div class="flex items-center space-x-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 fill-current ">
+                                    <path d="M426.072,86.928A238.75,238.75,0,0,0,88.428,424.572,238.75,238.75,0,0,0,426.072,86.928ZM257.25,462.5c-114,0-206.75-92.748-206.75-206.75S143.248,49,257.25,49,464,141.748,464,255.75,371.252,462.5,257.25,462.5Z"></path>
+                                    <polygon points="221.27 305.808 147.857 232.396 125.23 255.023 221.27 351.063 388.77 183.564 366.142 160.937 221.27 305.808"></polygon>
+                                </svg>
+                                <h4 class="font-medium">Quis velit quae similique maxime optio temporibus</h4>
+                            </div>
+                            <p class="ml-7 ">Illum hic placeat unde porro, cupiditate nesciunt? Numquam debitis eligendi aspernatur mum.</p>
+                        </li>
+                        <li class="space-y-1">
+                            <div class="flex items-center space-x-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 fill-current ">
+                                    <path d="M426.072,86.928A238.75,238.75,0,0,0,88.428,424.572,238.75,238.75,0,0,0,426.072,86.928ZM257.25,462.5c-114,0-206.75-92.748-206.75-206.75S143.248,49,257.25,49,464,141.748,464,255.75,371.252,462.5,257.25,462.5Z"></path>
+                                    <polygon points="221.27 305.808 147.857 232.396 125.23 255.023 221.27 351.063 388.77 183.564 366.142 160.937 221.27 305.808"></polygon>
+                                </svg>
+                                <h4 class="font-medium">Quis velit quae similique maxime optio temporibus</h4>
+                            </div>
+                            <p class="ml-7 ">Illum hic placeat unde porro, cupiditate nesciunt? Numquam debitis eligendi aspernatur mum.</p>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- End of Work Experience Section -->
+
+    <!-- Footer -->
+
+    <footer class="bg-white lg:grid lg:grid-cols-2" id="contact">
+      <div class="px-4 py-16 sm:px-6 lg:col-span-2 lg:px-8">
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+          <div>
+            <p>
+              <span class="text-xs uppercase tracking-wider text-gray-500">
+                Contact me
+              </span>
+
+              <a
+                href="#"
+                class="block text-xl font-medium text-gray-900 hover:opacity-75 sm:text-2xl hover:underline underline-offset-4"
+              >
+                youremail@sample.com
+              </a>
+            </p>
+          </div>
+
+          
+
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              <p>
+                <span class="text-xs uppercase tracking-wider text-gray-500">
+                  Let's connect
+                </span>
+              </p>
+
+              <ul class="mt-1 flex gap-6">
+                <li>
+                  <a
+                    href="#"
+                    rel="noreferrer"
+                    target="_blank"
+                    class="text-gray-700 transition hover:opacity-75"
+                    data-te-toggle="tooltip"
+                    data-te-placement="top"
+                    title="Facebook"
+                  >
+                    <span class="sr-only">Facebook</span>
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      height="24"
+                      class="main-grid-item-icon"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                      />
+                    </svg>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="#"
+                    rel="noreferrer"
+                    target="_blank"
+                    class="text-gray-700 transition hover:opacity-75"
+                    data-te-toggle="tooltip"
+                    title="Instagram"
+                  >
+                    <span class="sr-only">Instagram</span>
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      height="24"
+                      class="main-grid-item-icon"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                    >
+                      <rect height="20" rx="5" ry="5" width="20" x="2" y="2" />
+                      <path
+                        d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                      />
+                      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                    </svg>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="#"
+                    rel="noreferrer"
+                    target="_blank"
+                    class="text-gray-700 transition hover:opacity-75"
+                    data-te-toggle="tooltip"
+                    title="LinkedIn"
+                  >
+                    <span class="sr-only">LinkedIn</span>
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      height="24"
+                      class="main-grid-item-icon"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                      />
+                      <rect height="12" width="4" x="2" y="9" />
+                      <circle cx="4" cy="4" r="2" />
+                    </svg>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="#"
+                    rel="noreferrer"
+                    target="_blank"
+                    class="text-gray-700 transition hover:opacity-75"
+                    data-te-toggle="tooltip"
+                    title="GitHub"
+                  >
+                    <span class="sr-only">GitHub</span>
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      height="24"
+                      class="main-grid-item-icon"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                      />
+                    </svg>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="#"
+                    rel="noreferrer"
+                    target="_blank"
+                    class="text-gray-700 transition hover:opacity-75"
+                    data-te-toggle="tooltip"
+                    title="Resume"
+                  >
+                    <span class="sr-only">Resume</span>
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      height="24"
+                      class="main-grid-item-icon"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                      />
+                      <polyline points="14 2 14 8 20 8" />
+                      <line x1="16" x2="8" y1="13" y2="13" />
+                      <line x1="16" x2="8" y1="17" y2="17" />
+                      <polyline points="10 9 9 9 8 9" />
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          
+
+        <div class="mt-12 border-t border-gray-100 pt-12">
+          <div class="sm:flex sm:items-center sm:justify-between">
+            <p class="mt-8 text-xs text-gray-500 sm:mt-0 tracking-wider">
+              &copy; 2023. YOUR NAME
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End of Footer -->
+
+    <button
+      onclick="backToTop()"
+      id="backToTopBtn"
+      class="fixed bottom-10 right-10 p-2 rounded-full flex items-center justify-center transition-colors focus:outline-none"
+      title="Back to Top"
+    >
+      <svg
+        class="w-6 h-6"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 10l7-7m0 0l7 7m-7-7v18"
+        />
+      </svg>
+    </button>
+
+    <!-- Back to Top Button -->
+    <script>
+      const backToTopBtn = document.getElementById("backToTopBtn");
+
+      const backToTop = () => {
+        document.body.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+
+        document.documentElement.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      };
+
+      const scrollFunction = () => {
+        if (window.scrollY > 20) {
+          backToTopBtn.style.display = "block";
+        } else {
+          backToTopBtn.style.display = "none";
+        }
+      };
+
+      window.addEventListener("scroll", scrollFunction);
+      backToTopBtn.addEventListener("click", backToTop);
+    </script>
+
+    <!-- Burger Menu Button -->
+    <script>
+      const menuToggle = document.getElementById("menu-toggle");
+      menuToggle.addEventListener("click", () => {
+        document.getElementById("menu").classList.toggle("hidden");
+      });
+
+      const closeMenu = document.getElementById("close-menu");
+      closeMenu.addEventListener("click", () => {
+        document.getElementById("menu").classList.toggle("hidden");
+      });
+    </script>
+  </body>
 </html>
